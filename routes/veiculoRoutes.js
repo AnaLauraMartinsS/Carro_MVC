@@ -1,5 +1,3 @@
-// routes/veiculoRoutes.js
-
 const express = require('express');
 const router = express.Router();
 const veiculoController = require('../controllers/veiculoController');

@@ -1,51 +1,36 @@
 const veiculoModel = require('../models/veiculoModel');
 
-const exibirHome = (req, res) => {
-    const totalVeiculos = veiculoModel.listarTodos().length;
-    res.render('home', { totalVeiculos });
+exports.listagemVeiculos = (req, res) => {
+    const veiculos = veiculoModel.getAll();
+    res.render('veiculos', { veiculos: veiculos });
 };
 
-const listarVeiculos = (req, res) => {
-    const veiculos = veiculoModel.listarTodos();
-    res.render('veiculos', { veiculos });
+exports.cadastroVeiculo = (req, res) => {
+    res.render('cadastro');
 };
 
-const exibirFormularioCadastro = (req, res) => {
-    res.render('cadastro', { error: null });
-};
-
-const adicionarVeiculo = (req, res) => {
-    const { id, nome } = req.body;
-    if (!id || !nome) {
-        return res.render('cadastro', { error: 'ID e nome são obrigatórios.' });
+exports.salvarVeiculo = (req, res) => {
+    const { nome, fabricante, data } = req.body;
+    if (nome && fabricante && data) {
+        veiculoModel.add({ nome, fabricante, data });
     }
-    veiculoModel.adicionar({ id: parseInt(id), nome });
     res.redirect('/veiculos');
 };
 
-const editarVeiculo = (req, res) => {
-    const { id, nome } = req.body;
-    if (!id || !nome) {
-        return res.redirect('/veiculos');
-    }
-    veiculoModel.editar(parseInt(id), { nome });
+exports.excluirVeiculo = (req, res) => {
+    const { id } = req.params;
+    veiculoModel.remove(id);
     res.redirect('/veiculos');
 };
 
-const excluirVeiculo = (req, res) => {
-    const { id } = req.body;
-    if (!id) {
-        return res.redirect('/veiculos');
-    }
-    veiculoModel.excluir(parseInt(id));
+exports.editarVeiculo = (req, res) => {
+    const { id } = req.params;
+    const { nome, fabricante, data } = req.body;
+    veiculoModel.update(id, { nome, fabricante, data });
     res.redirect('/veiculos');
 };
 
-module.exports = {
-    exibirHome,
-    listarVeiculos,
-    exibirFormularioCadastro,
-    adicionarVeiculo,
-    editarVeiculo,
-    excluirVeiculo
+exports.home = (req, res) => {
+    const totalVeiculos = veiculoModel.getAll().length;
+    res.render('home', { totalVeiculos }); 
 };
