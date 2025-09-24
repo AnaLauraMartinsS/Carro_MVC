@@ -56,22 +56,3 @@ Se você tiver o nodemon instalado, pode usar:
 
 O servidor será iniciado na porta 3000. Abra seu navegador e acesse:
 http://localhost:3000
-
-📁 Estrutura do Projeto
-
-A aplicação segue a arquitetura MVC, com a seguinte estrutura de pastas:
-
-/CarroMVC
-├── controllers/          # Lógica da aplicação, intermediário entre model e view
-│   └── veiculoController.js
-├── models/               # Lógica de dados (simula um banco de dados com um array)
-│   └── veiculoModel.js
-├── routes/               # Gerencia as rotas e mapeia para os controllers
-│   └── veiculoRoutes.js
-├── views/                # A interface do usuário (arquivos EJS)
-│   ├── cadastro.ejs
-│   ├── home.ejs
-│   └── veiculos.ejs
-├── app.js                # Arquivo principal do servidor
-├── package.json          # Lista de dependências e scripts do projeto
-└── README.md
