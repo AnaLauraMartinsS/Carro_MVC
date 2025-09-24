@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de Veículo</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            background-color: #2c3e50; /* Cinza/Azul escuro */
+            color: #ecf0f1; /* Cinza claro */
+        }
+        .navbar {
+            background-color: #34495e; /* Cinza/Azul mais escuro para a navegação */
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        .navbar a {
+            color: #ecf0f1;
+            text-decoration: none;
+            padding: 10px 20px;
+            font-size: 1.1em;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .navbar a:hover {
+            background-color: #2980b9;
+            color: white;
+            border-radius: 5px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: #34495e;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+        h1 {
+            color: #9b59b6;
+            text-align: center;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        form label {
+            font-size: 1em;
+        }
+        form input[type="text"],
+        form input[type="date"] {
+            padding: 12px;
+            border: 1px solid #7f8c8d;
+            border-radius: 4px;
+            background-color: #ecf0f1;
+            color: #2c3e50;
+        }
+        form button {
+            padding: 12px;
+            background-color: #9b59b6;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1.1em;
+            transition: background-color 0.3s;
+        }
+        form button:hover {
+            background-color: #8e44ad;
+        }
+        .footer {
+            background-color: #34495e;
+            color: #ecf0f1;
+            text-align: center;
+            padding: 20px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            box-shadow: 0 -2px 5px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="/">Home</a>
+        <a href="/cadastro">Cadastrar Veículo</a>
+        <a href="/veiculos">Lista de Veículos</a>
+    </div>
+    <div class="container">
+        <h1>Cadastrar Novo Veículo</h1>
+        <form action="/veiculos/salvar" method="POST">
+            <label for="nome">Nome do Veículo:</label>
+            <input type="text" id="nome" name="nome" required>
+            <label for="fabricante">Fabricante:</label>
+            <input type="text" id="fabricante" name="fabricante" required>
+            <label for="data">Data de Lançamento:</label>
+            <input type="date" id="data" name="data" required>
+            <button type="submit">Salvar</button>
+        </form>
+    </div>
+    <div class="footer">
+        <p>Atividade Individual - MVC &copy; 2025</p>
+    </div>
+</body>
+</html>
